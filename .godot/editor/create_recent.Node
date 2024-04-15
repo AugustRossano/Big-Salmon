@@ -1,0 +1,14 @@
+CollisionShape3D
+StaticBody3D
+MeshInstance3D
+Camera3D
+PinJoint3D
+RigidBody3D
+Node3D
+CollisionShape2D
+RigidBody2D
+Node2D
+PhysicalBone2D
+PhysicalBone3D
+Skeleton2D
+Skeleton3D
