@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cymkknq330qmf"]
+[gd_scene load_steps=12 format=3 uid="uid://cymkknq330qmf"]
 
 [ext_resource type="Script" path="res://force.gd" id="1_iwrnv"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_jk1n4"]
@@ -13,6 +13,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cgf2w"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_x3bhr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2g7dt"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="SalmonDad" type="Node3D" parent="."]
@@ -22,7 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
-gravity_scale = 0.0
 script = ExtResource("1_iwrnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SalmonDad/Head"]
@@ -48,7 +51,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, 
 shape = SubResource("SphereShape3D_a4fy5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Top"]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -0.360888, 0, 0)
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -0.35568, 0, 0)
 mesh = ExtResource("3_yvrbq")
 
 [node name="PinJoint3D2" type="PinJoint3D" parent="SalmonDad"]
@@ -66,7 +69,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CapsuleShape3D_cgf2w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Mid"]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.000836492, 0.00439799, -0.00275397)
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 0, 0, 0)
 mesh = ExtResource("4_pncou")
 
 [node name="PinJoint3D3" type="PinJoint3D" parent="SalmonDad"]
@@ -76,7 +79,7 @@ node_b = NodePath("../Bottom")
 exclude_nodes_from_collision = false
 
 [node name="Bottom" type="RigidBody3D" parent="SalmonDad"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.168241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SalmonDad/Bottom"]
@@ -84,7 +87,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CapsuleShape3D_cgf2w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Bottom"]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.136572, -0.117028, 0.14479)
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.137, -0.117, 0)
 mesh = ExtResource("5_a8rq3")
 
 [node name="PinJoint3D4" type="PinJoint3D" parent="SalmonDad"]
@@ -94,7 +97,7 @@ node_b = NodePath("../Tail")
 exclude_nodes_from_collision = false
 
 [node name="Tail" type="RigidBody3D" parent="SalmonDad"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.0383725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SalmonDad/Tail"]
@@ -106,4 +109,17 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0.1131
 mesh = ExtResource("6_o737p")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
+current = true
+fov = 40.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 31.1436)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10, 0, 0)
+mesh = SubResource("BoxMesh_x3bhr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -16, 0, 0)
+mesh = SubResource("BoxMesh_2g7dt")
