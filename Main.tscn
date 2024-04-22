@@ -145,6 +145,7 @@ shape = SubResource("BoxShape3D_wjqcq")
 
 [node name="Sprite3D" type="Sprite3D" parent="Background"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -8)
+cast_shadow = 0
 texture = ExtResource("7_sgjjy")
 region_rect = Rect2(215, 293, 22, 40)
 script = ExtResource("7_md2af")
