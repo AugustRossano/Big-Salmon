@@ -14,6 +14,7 @@ func _process(delta):
 	salmonPos =  $"/root/Node3D/SalmonDad/Mid".position
 	
 	noise.offset=Vector3(salmonPos.x*10,-salmonPos.y*10,noise.offset.z+(delta*10))
-	position=salmonPos
+	position.x=salmonPos.x
+	position.y=salmonPos.y
 	#self.texture.set_shader_param("noise_img/noise/offset:x", time)
 	

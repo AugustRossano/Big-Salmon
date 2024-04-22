@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=12 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -14,10 +14,6 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_a4fy5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cgf2w"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_2g7dt"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wjqcq"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -132,19 +128,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.1436)
 light_energy = 2.0
 sky_mode = 1
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6, 0)
-mesh = SubResource("BoxMesh_2g7dt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_wjqcq")
-
 [node name="Background" type="Node3D" parent="."]
 
 [node name="Sprite3D" type="Sprite3D" parent="Background"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -8)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, -8)
 cast_shadow = 0
 texture = ExtResource("7_sgjjy")
 region_rect = Rect2(215, 293, 22, 40)
