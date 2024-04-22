@@ -1,14 +1,14 @@
+Node3D
+Sprite3D
+Decal
 StaticBody3D
 CollisionShape3D
 RigidBody3D
 MeshInstance3D
 Camera3D
 PinJoint3D
-Node3D
 CollisionShape2D
 RigidBody2D
 Node2D
 PhysicalBone2D
 PhysicalBone3D
-Skeleton2D
-Skeleton3D

@@ -7,13 +7,15 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func _input(event):
    # Mouse in viewport coordinates.
-	if event is InputEventMouseButton:
-			holder=((event.position*2)-Vector2(get_viewport().size))/Vector2(get_viewport().size)
-			holder.x=holder.x*27
-			holder.y=-holder.y*15
-			linear_velocity=(position-Vector3(holder.x,holder.y,0)).normalized()*50/(position-Vector3(holder.x,holder.y,0)).length()
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		holder=((event.position*2)-Vector2(get_viewport().size))/Vector2(get_viewport().size)
+		holder.x=holder.x*27
+		holder.y=-holder.y*15
+		if holder.length()>30:
+			holder = holder.normalized()*30
+		linear_velocity+=(position-Vector3(holder.x,holder.y,0)).normalized()*50/(position-Vector3(holder.x,holder.y,0)).length()

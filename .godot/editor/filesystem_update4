@@ -1,3 +1,4 @@
 res://Main.tscn
+res://starNoise.tres
 res://VHTest.tscn
-res://force.gd
+res://Noise.gd

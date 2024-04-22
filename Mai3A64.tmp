@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=16 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -7,7 +7,6 @@
 [ext_resource type="ArrayMesh" uid="uid://cnd5xmnyto1ud" path="res://Models/salmonBottom.obj" id="5_yo2as"]
 [ext_resource type="ArrayMesh" uid="uid://7nljv81neob5" path="res://Models/salmonTail.obj" id="6_hetn3"]
 [ext_resource type="Script" path="res://Noise.gd" id="7_md2af"]
-[ext_resource type="Texture2D" uid="uid://jyj1iuhpnlwd" path="res://starNoise.tres" id="7_sgjjy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kglh6"]
 
@@ -18,6 +17,30 @@
 [sub_resource type="BoxMesh" id="BoxMesh_2g7dt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjqcq"]
+
+[sub_resource type="Gradient" id="Gradient_yrvdt"]
+interpolation_mode = 2
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.214286, 0.350649, 0.532468, 0.623377, 0.701299, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.903477, 0.820019, 0.780504, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.579456, 0.64626, 0.642023, 1, 0, 0, 0, 1, 0.910516, 0.789893, 0.676997, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pa2hn"]
+noise_type = 5
+seed = 1
+frequency = 0.005
+fractal_type = 2
+fractal_octaves = 4
+fractal_lacunarity = 3.0
+fractal_gain = 0.6
+domain_warp_enabled = true
+domain_warp_type = 2
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_htfmx"]
+seamless = true
+seamless_blend_skirt = 0.723
+color_ramp = SubResource("Gradient_yrvdt")
+noise = SubResource("FastNoiseLite_pa2hn")
 
 [node name="Node3D" type="Node3D"]
 
@@ -145,6 +168,6 @@ shape = SubResource("BoxShape3D_wjqcq")
 
 [node name="Sprite3D" type="Sprite3D" parent="Background"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -8)
-texture = ExtResource("7_sgjjy")
+texture = SubResource("NoiseTexture2D_htfmx")
 region_rect = Rect2(215, 293, 22, 40)
 script = ExtResource("7_md2af")
