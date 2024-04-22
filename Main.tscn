@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://dmdwttraqtwt5"]
 
-[ext_resource type="Script" path="res://force.gd" id="1_oqs7g"]
+[ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
 [ext_resource type="ArrayMesh" uid="uid://163g6kggjp3d" path="res://Models/salmonTop.obj" id="3_y7j04"]
 [ext_resource type="ArrayMesh" uid="uid://dgjfvj6tlg3gu" path="res://Models/salmonMiddle.obj" id="4_ikif8"]
 [ext_resource type="ArrayMesh" uid="uid://cnd5xmnyto1ud" path="res://Models/salmonBottom.obj" id="5_yo2as"]
 [ext_resource type="ArrayMesh" uid="uid://7nljv81neob5" path="res://Models/salmonTail.obj" id="6_hetn3"]
-[ext_resource type="Script" path="res://Noise.gd" id="7_md2af"]
+[ext_resource type="Script" path="res://Scripts/Noise.gd" id="7_md2af"]
 [ext_resource type="Texture2D" uid="uid://jyj1iuhpnlwd" path="res://starNoise.tres" id="7_sgjjy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kglh6"]

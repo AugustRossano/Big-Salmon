@@ -11,5 +11,8 @@ fractal_gain = 0.8
 fractal_weighted_strength = 0.55
 
 [resource]
+width = 550
+height = 320
+in_3d_space = true
 color_ramp = SubResource("Gradient_0c53i")
 noise = SubResource("FastNoiseLite_htc3g")

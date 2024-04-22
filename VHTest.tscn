@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cymkknq330qmf"]
 
-[ext_resource type="Script" path="res://force.gd" id="1_iwrnv"]
+[ext_resource type="Script" path="res://Scripts/force.gd" id="1_iwrnv"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_jk1n4"]
 [ext_resource type="ArrayMesh" uid="uid://163g6kggjp3d" path="res://Models/salmonTop.obj" id="3_yvrbq"]
 [ext_resource type="ArrayMesh" uid="uid://dgjfvj6tlg3gu" path="res://Models/salmonMiddle.obj" id="4_pncou"]
