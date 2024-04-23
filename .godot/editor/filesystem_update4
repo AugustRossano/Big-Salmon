@@ -1,3 +1,4 @@
-res://VHTest.tscn
+res://Main.tscn
 res://starNoise.tres
-res://Scripts/Noise.gd
+res://VHTest.tscn
+res://Scripts/3D_Camera_Follow.gd
