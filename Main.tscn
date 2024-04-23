@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=13 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://7nljv81neob5" path="res://Models/salmonTail.obj" id="6_hetn3"]
 [ext_resource type="Script" path="res://Scripts/Noise.gd" id="7_md2af"]
 [ext_resource type="Texture2D" uid="uid://jyj1iuhpnlwd" path="res://starNoise.tres" id="7_sgjjy"]
+[ext_resource type="Script" path="res://Scripts/3D_Camera_Follow.gd" id="7_wseri"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kglh6"]
 
@@ -122,6 +123,7 @@ mesh = ExtResource("6_hetn3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
 current = true
 fov = 40.0
+script = ExtResource("7_wseri")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.1436)
