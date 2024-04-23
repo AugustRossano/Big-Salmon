@@ -1,3 +1,3 @@
-res://Main.tscn
-res://starNoise.tres
 res://VHTest.tscn
+res://starNoise.tres
+res://Scripts/Noise.gd
