@@ -1,4 +1,5 @@
 res://Main.tscn
 res://starNoise.tres
 res://VHTest.tscn
-res://Scripts/3D_Camera_Follow.gd
+res://Scripts/force.gd
+res://Models/scales.tres
