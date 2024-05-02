@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ucwiipeycrwg"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhqemoui7t7hg" path="res://Models/probe.obj" id="1_y8nq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2na"]
+size = Vector3(4.5, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wka4i"]
+radius = 0.25
+height = 8.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6f1bd"]
+radius = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lfwoo"]
+radius = 0.25
+
+[node name="SamuelProbe" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(-0.5, 4.37114e-08, 1.91069e-15, 0, -2.18557e-08, 0.5, 4.37114e-08, 0.5, 2.18557e-08, 0, 0, 0)
+mesh = ExtResource("1_y8nq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_5a2na")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+shape = SubResource("BoxShape3D_5a2na")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_wka4i")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_6f1bd")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5, 0, 0)
+shape = SubResource("CapsuleShape3D_lfwoo")

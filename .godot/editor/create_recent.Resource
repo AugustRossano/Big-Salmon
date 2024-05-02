@@ -1,2 +1,3 @@
+CurveTexture
 StandardMaterial3D
 NoiseTexture2D

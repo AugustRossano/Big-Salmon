@@ -20,3 +20,4 @@ func _input(event):
 		if(query.length_squared()>1764):
 			query=query.normalized()*42
 		apply_central_impulse(query)
+		

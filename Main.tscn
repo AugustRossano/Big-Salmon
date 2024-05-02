@@ -1,17 +1,97 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=34 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
 [ext_resource type="Material" uid="uid://cakdvty4v0f7a" path="res://Models/scales.tres" id="3_kexud"]
 [ext_resource type="ArrayMesh" uid="uid://163g6kggjp3d" path="res://Models/salmonTop.obj" id="3_y7j04"]
 [ext_resource type="ArrayMesh" uid="uid://dgjfvj6tlg3gu" path="res://Models/salmonMiddle.obj" id="4_ikif8"]
+[ext_resource type="Script" path="res://Scripts/laserEffect.gd" id="4_xijsu"]
+[ext_resource type="Texture2D" uid="uid://8qnc1f6v1047" path="res://new_curve_texture.tres" id="5_d68ox"]
+[ext_resource type="Script" path="res://Scripts/wavePulse.gd" id="5_k7225"]
 [ext_resource type="ArrayMesh" uid="uid://cnd5xmnyto1ud" path="res://Models/salmonBottom.obj" id="5_yo2as"]
 [ext_resource type="ArrayMesh" uid="uid://7nljv81neob5" path="res://Models/salmonTail.obj" id="6_hetn3"]
 [ext_resource type="Script" path="res://Scripts/Noise.gd" id="7_md2af"]
 [ext_resource type="Texture2D" uid="uid://jyj1iuhpnlwd" path="res://starNoise.tres" id="7_sgjjy"]
 [ext_resource type="Script" path="res://Scripts/3D_Camera_Follow.gd" id="7_wseri"]
+[ext_resource type="Script" path="res://Scripts/ACID.gd" id="9_blhv6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kegq"]
+transparency = 1
+cull_mode = 1
+shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.847059)
+metallic_specular = 0.0
+rim_tint = 1.0
+refraction_scale = -0.28
+disable_receive_shadows = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yxayg"]
+lightmap_size_hint = Vector2i(17, 54)
+material = SubResource("StandardMaterial3D_6kegq")
+height = 30.0
+
+[sub_resource type="Gradient" id="Gradient_ufxmk"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8lwc2"]
+gradient = SubResource("Gradient_ufxmk")
+
+[sub_resource type="Gradient" id="Gradient_2iwfw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dde2m"]
+noise_type = 0
+frequency = 0.014
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1wia"]
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 32.0
+color_ramp = SubResource("Gradient_2iwfw")
+noise = SubResource("FastNoiseLite_dde2m")
+
+[sub_resource type="Gradient" id="Gradient_nhu7q"]
+colors = PackedColorArray(1, 0, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_inn0i"]
+gradient = SubResource("Gradient_nhu7q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qjklx"]
+spread = 0.0
+initial_velocity_min = 7.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = ExtResource("5_d68ox")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5krhh"]
+material = SubResource("StandardMaterial3D_6kegq")
+radius = 0.75
+height = 1.5
+
+[sub_resource type="Curve" id="Curve_lwr5u"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.335443, 1.6738), 0.178407, 0.178407, 0, 0, Vector2(0.889241, 0.200252), -0.629246, -0.629246, 0, 0, Vector2(1, 0.175693), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2r05d"]
+curve = SubResource("Curve_lwr5u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ooayd"]
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(3, 0, 0)
+scale_curve = SubResource("CurveTexture_2r05d")
+
+[sub_resource type="SphereMesh" id="SphereMesh_nfglo"]
+material = SubResource("StandardMaterial3D_6kegq")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fixnt"]
 
@@ -25,7 +105,7 @@ tonemap_white = 16.0
 ssr_fade_out = 0.435276
 ssr_depth_tolerance = 0.01
 ssao_radius = 0.01
-adjustment_enabled = true
+adjustment_color_correction = ExtResource("7_sgjjy")
 
 [node name="Node3D" type="Node3D"]
 
@@ -47,6 +127,81 @@ shape = SubResource("SphereShape3D_ia2gk")
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -0.75, 0, 0)
 mesh = ExtResource("2_i4ecv")
 surface_material_override/0 = ExtResource("3_kexud")
+
+[node name="Laser" type="Node3D" parent="SalmonDad/Head"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 16, 0, 0)
+visible = false
+layers = 3
+mesh = SubResource("CapsuleMesh_yxayg")
+skeleton = NodePath("../..")
+
+[node name="Decal2" type="Decal" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, -4, 0, 0)
+size = Vector3(10, 10, 10)
+texture_albedo = SubResource("GradientTexture1D_8lwc2")
+texture_emission = SubResource("NoiseTexture2D_q1wia")
+cull_mask = 1048574
+script = ExtResource("4_xijsu")
+
+[node name="Decal3" type="Decal" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 16, 0, 0)
+size = Vector3(10, 10, 10)
+texture_albedo = SubResource("GradientTexture1D_8lwc2")
+texture_emission = SubResource("NoiseTexture2D_q1wia")
+cull_mask = 1048574
+script = ExtResource("4_xijsu")
+
+[node name="Decal5" type="Decal" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 36, 0, 0)
+size = Vector3(10, 10, 10)
+texture_albedo = SubResource("GradientTexture1D_8lwc2")
+texture_emission = SubResource("NoiseTexture2D_q1wia")
+cull_mask = 1048574
+script = ExtResource("4_xijsu")
+
+[node name="Decal" type="Decal" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 6, 0, 0)
+layers = 2
+size = Vector3(10, 10, 10)
+texture_albedo = SubResource("GradientTexture1D_inn0i")
+texture_emission = SubResource("NoiseTexture2D_q1wia")
+cull_mask = 1048574
+script = ExtResource("4_xijsu")
+
+[node name="Decal4" type="Decal" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 26, 0, 0)
+layers = 2
+size = Vector3(10, 10, 10)
+texture_albedo = SubResource("GradientTexture1D_inn0i")
+texture_emission = SubResource("NoiseTexture2D_q1wia")
+cull_mask = 1048574
+script = ExtResource("4_xijsu")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+layers = 3
+amount = 100
+lifetime = 4.0
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qjklx")
+draw_pass_1 = SubResource("SphereMesh_5krhh")
+script = ExtResource("5_k7225")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="SalmonDad/Head/Laser"]
+layers = 7
+amount = 32
+lifetime = 1.2
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_ooayd")
+draw_pass_1 = SubResource("SphereMesh_nfglo")
+
+[node name="RayCast3D" type="RayCast3D" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+target_position = Vector3(30, 0, 0)
 
 [node name="PinJoint3D" type="PinJoint3D" parent="SalmonDad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
@@ -142,6 +297,7 @@ surface_material_override/1 = ExtResource("3_kexud")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SalmonDad"]
 environment = SubResource("Environment_q3x73")
+script = ExtResource("9_blhv6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
@@ -185,7 +341,8 @@ light_energy = 2.0
 sky_mode = 1
 
 [node name="DirectionalLight3D5" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(-5.73206e-15, 1, 1.74846e-07, -1, 1.71962e-14, -1.31134e-07, -1.31134e-07, -1.74846e-07, 1, 0, 0, 31.1436)
+transform = Transform3D(-5.73206e-15, 1, 1.74846e-07, -0.965926, -4.52534e-08, 0.258819, 0.258819, -1.68888e-07, 0.965926, 0, 1.93278, 31.1436)
+light_energy = 1.4
 light_indirect_energy = 0.0
 light_bake_mode = 0
 sky_mode = 1
