@@ -1,8 +1,9 @@
 res://Main.tscn
 res://Scripts/ACID.gd
-res://starNoise.tres
-res://new_curve_texture.tres
 res://Models/scales.tres
+res://new_curve_texture.tres
+res://starNoise.tres
 res://VHTest.tscn
 res://samuel_probe.tscn
+res://Scripts/laserEffect.gd
 res://laserRaycast.gd

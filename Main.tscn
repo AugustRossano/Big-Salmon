@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=41 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -75,10 +75,12 @@ scale_curve = ExtResource("5_d68ox")
 material = SubResource("StandardMaterial3D_6kegq")
 radius = 0.75
 height = 1.5
+radial_segments = 32
+rings = 16
 
 [sub_resource type="Curve" id="Curve_lwr5u"]
 max_value = 3.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.335443, 1.6738), 0.178407, 0.178407, 0, 0, Vector2(0.889241, 0.200252), -0.629246, -0.629246, 0, 0, Vector2(1, 0.175693), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.335443, 1.6738), 0.178407, 0.178407, 0, 0, Vector2(0.901899, 0.445844), -0.629246, -0.629246, 0, 0, Vector2(0.905063, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_2r05d"]
@@ -93,6 +95,35 @@ scale_curve = SubResource("CurveTexture_2r05d")
 
 [sub_resource type="SphereMesh" id="SphereMesh_nfglo"]
 material = SubResource("StandardMaterial3D_6kegq")
+radial_segments = 32
+rings = 16
+
+[sub_resource type="Curve" id="Curve_7crqa"]
+_data = [Vector2(0.00949367, 1), 0.0, 0.0, 0, 0, Vector2(0.721519, 0.615239), -1.0837, -1.0837, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vlm1m"]
+curve = SubResource("Curve_7crqa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4lg1d"]
+direction = Vector3(-1, 0, 0)
+spread = 70.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -7.0
+scale_curve = SubResource("CurveTexture_vlm1m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbemj"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.498039)
+emission_enabled = true
+emission = Color(1, 0.368627, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lh4l8"]
+material = SubResource("StandardMaterial3D_bbemj")
+radial_segments = 32
+rings = 16
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fixnt"]
 
@@ -108,9 +139,7 @@ ssr_depth_tolerance = 0.01
 ssao_radius = 0.01
 adjustment_color_correction = ExtResource("7_sgjjy")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l3afw"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_rg2kh"]
+[sub_resource type="SphereMesh" id="SphereMesh_6hsoj"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -130,6 +159,7 @@ shape = SubResource("SphereShape3D_ia2gk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Head"]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -0.75, 0, 0)
+layers = 33
 mesh = ExtResource("2_i4ecv")
 surface_material_override/0 = ExtResource("3_kexud")
 
@@ -147,7 +177,7 @@ transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 
 size = Vector3(10, 10, 10)
 texture_albedo = SubResource("GradientTexture1D_8lwc2")
 texture_emission = SubResource("NoiseTexture2D_q1wia")
-cull_mask = 1048574
+cull_mask = 1047554
 script = ExtResource("4_xijsu")
 
 [node name="Decal3" type="Decal" parent="SalmonDad/Head/Laser"]
@@ -155,7 +185,7 @@ transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 
 size = Vector3(10, 10, 10)
 texture_albedo = SubResource("GradientTexture1D_8lwc2")
 texture_emission = SubResource("NoiseTexture2D_q1wia")
-cull_mask = 1048574
+cull_mask = 1047554
 script = ExtResource("4_xijsu")
 
 [node name="Decal5" type="Decal" parent="SalmonDad/Head/Laser"]
@@ -163,7 +193,7 @@ transform = Transform3D(1, 0, 0, 0, -1.96701e-08, -0.45, 0, 0.45, -1.96701e-08, 
 size = Vector3(10, 10, 10)
 texture_albedo = SubResource("GradientTexture1D_8lwc2")
 texture_emission = SubResource("NoiseTexture2D_q1wia")
-cull_mask = 1048574
+cull_mask = 1047554
 script = ExtResource("4_xijsu")
 
 [node name="Decal" type="Decal" parent="SalmonDad/Head/Laser"]
@@ -172,7 +202,7 @@ layers = 2
 size = Vector3(10, 10, 10)
 texture_albedo = SubResource("GradientTexture1D_inn0i")
 texture_emission = SubResource("NoiseTexture2D_q1wia")
-cull_mask = 1048574
+cull_mask = 1047554
 script = ExtResource("4_xijsu")
 
 [node name="Decal4" type="Decal" parent="SalmonDad/Head/Laser"]
@@ -181,7 +211,7 @@ layers = 2
 size = Vector3(10, 10, 10)
 texture_albedo = SubResource("GradientTexture1D_inn0i")
 texture_emission = SubResource("NoiseTexture2D_q1wia")
-cull_mask = 1048574
+cull_mask = 1047554
 script = ExtResource("4_xijsu")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="SalmonDad/Head/Laser"]
@@ -197,7 +227,7 @@ draw_pass_1 = SubResource("SphereMesh_5krhh")
 script = ExtResource("5_k7225")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="SalmonDad/Head/Laser"]
-layers = 7
+layers = 3
 amount = 32
 lifetime = 1.2
 local_coords = true
@@ -207,11 +237,25 @@ draw_pass_1 = SubResource("SphereMesh_nfglo")
 
 [node name="RayCast3D" type="RayCast3D" parent="SalmonDad/Head/Laser"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+top_level = true
 target_position = Vector3(30, 0, 0)
-hit_from_inside = true
 debug_shape_custom_color = Color(0, 1, 0, 1)
 debug_shape_thickness = 5
 script = ExtResource("7_nh3ih")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="SalmonDad/Head/Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55729, 0, 0)
+top_level = true
+layers = 4
+amount = 64
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_4lg1d")
+draw_pass_1 = SubResource("SphereMesh_lh4l8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SalmonDad/Head/Laser/GPUParticles3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+layers = 4
+light_color = Color(0.909804, 0.294118, 0, 1)
 
 [node name="PinJoint3D" type="PinJoint3D" parent="SalmonDad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
@@ -233,6 +277,7 @@ shape = SubResource("CapsuleShape3D_fixnt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Top"]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -0.360888, 0, 0)
+layers = 33
 mesh = ExtResource("3_y7j04")
 surface_material_override/0 = ExtResource("3_kexud")
 
@@ -256,6 +301,7 @@ shape = SubResource("CapsuleShape3D_cgf2w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Mid"]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 0, 0, 0)
+layers = 33
 mesh = ExtResource("4_ikif8")
 surface_material_override/0 = ExtResource("3_kexud")
 
@@ -279,6 +325,7 @@ shape = SubResource("CapsuleShape3D_cgf2w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Bottom"]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.137, -0.117, 0)
+layers = 33
 mesh = ExtResource("5_yo2as")
 surface_material_override/0 = ExtResource("3_kexud")
 
@@ -302,6 +349,7 @@ shape = SubResource("CapsuleShape3D_cgf2w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SalmonDad/Tail"]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0.433, -0.0254222, 0)
+layers = 33
 mesh = ExtResource("6_hetn3")
 surface_material_override/1 = ExtResource("3_kexud")
 
@@ -328,26 +376,34 @@ script = ExtResource("7_md2af")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 31.1436)
+layers = 32
 light_color = Color(0, 1, 1, 1)
 light_energy = 2.0
+light_cull_mask = 4294966304
 sky_mode = 1
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 31.1436)
+layers = 32
 light_color = Color(0, 1, 1, 1)
 light_energy = 2.0
+light_cull_mask = 4294966304
 sky_mode = 1
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(-4.37114e-08, -1.31134e-07, 1, 1, -5.73206e-15, 4.37114e-08, 0, 1, 1.31134e-07, 0, 0, 31.1436)
+transform = Transform3D(-4.37114e-08, -1.31134e-07, 1, 1, -5.73205e-15, 4.37114e-08, 0, 1, 1.31134e-07, 0, 0, 31.1436)
+layers = 32
 light_color = Color(0, 1, 1, 1)
 light_energy = 2.0
+light_cull_mask = 4294966304
 sky_mode = 1
 
 [node name="DirectionalLight3D4" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(1.31134e-07, 1.31134e-07, -1, -1, 1.71962e-14, -1.31134e-07, 0, 1, 1.31134e-07, 0, 0, 31.1436)
+transform = Transform3D(1.31134e-07, 1.31134e-07, -1, -1, 1.71961e-14, -1.31134e-07, 0, 1, 1.31134e-07, 0, 0, 31.1436)
+layers = 32
 light_color = Color(0, 1, 1, 1)
 light_energy = 2.0
+light_cull_mask = 4294966304
 sky_mode = 1
 
 [node name="DirectionalLight3D5" type="DirectionalLight3D" parent="Lights"]
@@ -355,14 +411,9 @@ transform = Transform3D(-5.73206e-15, 1, 1.74846e-07, -0.965926, -4.52534e-08, 0
 light_energy = 1.4
 light_indirect_energy = 0.0
 light_bake_mode = 0
+light_cull_mask = 4294966273
 sky_mode = 1
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12, 0, 0)
-disable_mode = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_l3afw")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_rg2kh")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_6hsoj")

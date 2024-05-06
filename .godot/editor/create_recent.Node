@@ -1,5 +1,8 @@
-GPUParticles3D
+OmniLight3D
 MeshInstance3D
+SpotLight3D
+CollisionPolygon3D
+GPUParticles3D
 CollisionShape3D
 StaticBody3D
 RayCast3D
@@ -8,7 +11,4 @@ Node3D
 DirectionalLight3D
 Decal
 Line2D
-CollisionPolygon3D
 RigidBody3D
-WorldEnvironment
-Sprite3D
