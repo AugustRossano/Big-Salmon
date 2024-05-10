@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=46 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://jyj1iuhpnlwd" path="res://starNoise.tres" id="7_sgjjy"]
 [ext_resource type="Script" path="res://Scripts/3D_Camera_Follow.gd" id="7_wseri"]
 [ext_resource type="Script" path="res://Scripts/ACID.gd" id="9_blhv6"]
+[ext_resource type="ArrayMesh" path="res://Models/astriod.obj" id="16_4ek8b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
 
@@ -139,7 +140,25 @@ ssr_depth_tolerance = 0.01
 ssao_radius = 0.01
 adjustment_color_correction = ExtResource("7_sgjjy")
 
-[sub_resource type="SphereMesh" id="SphereMesh_6hsoj"]
+[sub_resource type="Gradient" id="Gradient_x221r"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q5v1o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iv2lf"]
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+color_ramp = SubResource("Gradient_x221r")
+noise = SubResource("FastNoiseLite_q5v1o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hfok"]
+albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
+roughness = 0.88
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_iv2lf")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6vfk5"]
+radius = 3.02
 
 [node name="Node3D" type="Node3D"]
 
@@ -414,6 +433,18 @@ light_bake_mode = 0
 light_cull_mask = 4294966273
 sky_mode = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("SphereMesh_6hsoj")
+[node name="asteriod" type="Node3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="asteriod"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 7, 0)
+axis_lock_linear_z = true
+mass = 50.0
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="asteriod/RigidBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("16_4ek8b")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hfok")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="asteriod/RigidBody3D"]
+shape = SubResource("SphereShape3D_6vfk5")

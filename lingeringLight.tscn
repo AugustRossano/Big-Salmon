@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy48nr81ovvg7"]
+
+[ext_resource type="Script" path="res://lightFade.gd" id="1_jr3k6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_80y6s"]
+
+[node name="OmniLight3D" type="OmniLight3D"]
+light_color = Color(1, 0.360784, 0.266667, 1)
+light_size = 2.0
+omni_range = 4.0
+script = ExtResource("1_jr3k6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_80y6s")
