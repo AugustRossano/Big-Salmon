@@ -1,6 +1,9 @@
 res://VHTest.tscn
 res://Scripts/ACID.gd
-res://starNoise.tres
-res://new_curve_texture.tres
 res://Models/scales.tres
-res://Scripts/3D_Camera_Follow.gd
+res://new_curve_texture.tres
+res://starNoise.tres
+res://Scripts/Follow.gd
+res://Scripts/ProjectileRadius.gd
+res://Scripts/wavePulse.gd
+res://lightFade.gd

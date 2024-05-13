@@ -1,3 +1,4 @@
+#Makes object move towards another object(Enemy->Player)
 extends Node3D
 
 # Variables to store the target object and speed
