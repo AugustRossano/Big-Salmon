@@ -1,6 +1,3 @@
-#Auth: Vincent Hayes	
-#LED: 5/10/24
-#Desc: Attatch to camera and select target, camera follows selected target
 extends Camera3D
 
 # The object the camera will follow

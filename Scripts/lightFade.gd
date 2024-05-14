@@ -1,4 +1,4 @@
-extends Node
+extends OmniLight3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	light_energy-=delta/3
+	if(light_energy<=0):
+		free()
 	pass
-func acidModeToggle(trippy:bool):
-	Environment.adjustment_enabled=trippy

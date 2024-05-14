@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=51 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -11,11 +11,12 @@
 [ext_resource type="ArrayMesh" uid="uid://cnd5xmnyto1ud" path="res://Models/salmonBottom.obj" id="5_yo2as"]
 [ext_resource type="ArrayMesh" uid="uid://7nljv81neob5" path="res://Models/salmonTail.obj" id="6_hetn3"]
 [ext_resource type="Script" path="res://Scripts/Noise.gd" id="7_md2af"]
-[ext_resource type="Script" path="res://laserRaycast.gd" id="7_nh3ih"]
+[ext_resource type="Script" path="res://Scripts/laserRaycast.gd" id="7_nh3ih"]
 [ext_resource type="Texture2D" uid="uid://jyj1iuhpnlwd" path="res://starNoise.tres" id="7_sgjjy"]
 [ext_resource type="Script" path="res://Scripts/3D_Camera_Follow.gd" id="7_wseri"]
 [ext_resource type="Script" path="res://Scripts/ACID.gd" id="9_blhv6"]
-[ext_resource type="ArrayMesh" path="res://Models/astriod.obj" id="16_4ek8b"]
+[ext_resource type="ArrayMesh" uid="uid://lbpf4scs2jwu" path="res://Models/astriod.obj" id="16_4ek8b"]
+[ext_resource type="Script" path="res://Scripts/asteriod.gd" id="16_wftn2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
 
@@ -144,7 +145,7 @@ adjustment_color_correction = ExtResource("7_sgjjy")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q5v1o"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iv2lf"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xnnha"]
 seamless = true
 seamless_blend_skirt = 1.0
 as_normal_map = true
@@ -155,10 +156,30 @@ noise = SubResource("FastNoiseLite_q5v1o")
 albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
 roughness = 0.88
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_iv2lf")
+normal_texture = SubResource("NoiseTexture2D_xnnha")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6vfk5"]
 radius = 3.02
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pca3q"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jt8re"]
+width = 1000
+height = 200
+generate_mipmaps = false
+as_normal_map = true
+noise = SubResource("FastNoiseLite_pca3q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xsh2"]
+albedo_color = Color(0.862745, 0.396078, 0.388235, 1)
+metallic = 0.44
+roughness = 0.1
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_jt8re")
+
+[sub_resource type="BoxMesh" id="BoxMesh_505em"]
+material = SubResource("StandardMaterial3D_2xsh2")
 
 [node name="Node3D" type="Node3D"]
 
@@ -436,10 +457,13 @@ sky_mode = 1
 [node name="asteriod" type="Node3D" parent="."]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="asteriod"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 axis_lock_linear_z = true
 mass = 50.0
 gravity_scale = 0.0
+script = ExtResource("16_wftn2")
+metadata/heatCapacity = 3.0
+metadata/heat = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="asteriod/RigidBody3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -448,3 +472,20 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1hfok")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="asteriod/RigidBody3D"]
 shape = SubResource("SphereShape3D_6vfk5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 25.0
+text = "NO POINTS????"
+scroll_active = false
+
+[node name="meatcube" type="MeshInstance3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 5, -19)
+mesh = SubResource("BoxMesh_505em")

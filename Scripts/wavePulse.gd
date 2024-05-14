@@ -6,6 +6,8 @@ var height: float
 func _ready():
 	wave = preload("res://new_curve_texture.tres").curve
 	pass # Replace with function body.
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	wave.set_point_offset(1,time)
