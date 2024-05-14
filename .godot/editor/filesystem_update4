@@ -11,3 +11,5 @@ res://Scripts/force.gd
 res://Scripts/laserEffect.gd
 res://Scripts/Noise.gd
 res://Scripts/wavePulse.gd
+res://meteor.tscn
+res://Scripts/asteriod.gd

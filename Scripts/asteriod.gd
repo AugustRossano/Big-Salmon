@@ -20,7 +20,7 @@ func _process(delta):
 				var randomOffset = randi_range(0,90)
 				for n in 4:
 					var asteriodInstance = asteriod.instantiate()
-					print(asteriodInstance.get_meta_list())
+					
 					asteriodInstance.set_meta("heatCapacity",get_meta("heatCapacity")/2)
 					asteriodInstance.scale = Vector3(get_meta("heatCapacity"),get_meta("heatCapacity"),get_meta("heatCapacity"))
 					

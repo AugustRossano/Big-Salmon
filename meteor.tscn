@@ -1,38 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://d10rggv6issqy"]
+[gd_scene load_steps=8 format=3 uid="uid://cpgnf68jccth"]
 
-[ext_resource type="Script" path="res://Scripts/asteriod.gd" id="1_0u32j"]
-[ext_resource type="ArrayMesh" uid="uid://lbpf4scs2jwu" path="res://Models/astriod.obj" id="2_lbths"]
+[ext_resource type="Script" path="res://Scripts/asteriod.gd" id="1_7yv6s"]
+[ext_resource type="ArrayMesh" uid="uid://lbpf4scs2jwu" path="res://Models/astriod.obj" id="2_1ldbx"]
 
-[sub_resource type="Gradient" id="Gradient_6k2by"]
+[sub_resource type="Gradient" id="Gradient_o3hrq"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tnxo8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_medk5"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iv2lf"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xnnha"]
 seamless = true
 seamless_blend_skirt = 1.0
 as_normal_map = true
-color_ramp = SubResource("Gradient_6k2by")
-noise = SubResource("FastNoiseLite_tnxo8")
+color_ramp = SubResource("Gradient_o3hrq")
+noise = SubResource("FastNoiseLite_medk5")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfhsa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj0yi"]
 albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
 roughness = 0.88
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_iv2lf")
+normal_texture = SubResource("NoiseTexture2D_xnnha")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_eyynb"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_4a6x8"]
 radius = 3.02
 
 [node name="RigidBody3D" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+axis_lock_linear_z = true
+mass = 50.0
 gravity_scale = 0.0
-script = ExtResource("1_0u32j")
+script = ExtResource("1_7yv6s")
+metadata/heatCapacity = 3.0
 metadata/heat = 0.0
-metadata/heatCapacity = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-mesh = ExtResource("2_lbths")
-surface_material_override/0 = SubResource("StandardMaterial3D_wfhsa")
+mesh = ExtResource("2_1ldbx")
+surface_material_override/0 = SubResource("StandardMaterial3D_kj0yi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_eyynb")
+shape = SubResource("SphereShape3D_4a6x8")

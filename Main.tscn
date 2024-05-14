@@ -145,7 +145,7 @@ adjustment_color_correction = ExtResource("7_sgjjy")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q5v1o"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xnnha"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i1j6o"]
 seamless = true
 seamless_blend_skirt = 1.0
 as_normal_map = true
@@ -156,7 +156,7 @@ noise = SubResource("FastNoiseLite_q5v1o")
 albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
 roughness = 0.88
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_xnnha")
+normal_texture = SubResource("NoiseTexture2D_i1j6o")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6vfk5"]
 radius = 3.02
