@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	light_energy-=delta/3
+	light_energy-=delta/10
 	if(light_energy<=0):
 		free()
 	pass

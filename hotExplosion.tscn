@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://brdgt4r4anc3f"]
+
+[sub_resource type="Curve" id="Curve_u1pck"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.58242), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cfm8g"]
+curve = SubResource("Curve_u1pck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_inplq"]
+emission_shape = 2
+emission_sphere_radius = 2.0
+angle_min = -720.0
+angle_max = -720.0
+velocity_pivot = Vector3(1, 1, 1)
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 0.1
+damping_min = 1.0
+damping_max = 1.0
+attractor_interaction_enabled = false
+scale_over_velocity_curve = SubResource("CurveTexture_cfm8g")
+turbulence_noise_strength = 0.01
+turbulence_noise_scale = 4.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y0blk"]
+frequency = 0.0062
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_87fyv"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_y0blk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_we1b1"]
+albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
+roughness = 0.88
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+normal_texture = SubResource("NoiseTexture2D_87fyv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_r842w"]
+material = SubResource("StandardMaterial3D_we1b1")
+height = 0.5
+radial_segments = 9
+rings = 3
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 100
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_inplq")
+draw_pass_1 = SubResource("SphereMesh_r842w")

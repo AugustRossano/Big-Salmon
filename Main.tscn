@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/3D_Camera_Follow.gd" id="7_wseri"]
 [ext_resource type="Script" path="res://Scripts/ACID.gd" id="9_blhv6"]
 [ext_resource type="ArrayMesh" uid="uid://lbpf4scs2jwu" path="res://Models/astriod.obj" id="16_4ek8b"]
-[ext_resource type="Script" path="res://Scripts/asteriod.gd" id="16_wftn2"]
+[ext_resource type="Script" path="res://Scripts/asteroid.gd" id="16_wftn2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
 
@@ -145,7 +145,7 @@ adjustment_color_correction = ExtResource("7_sgjjy")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q5v1o"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i1j6o"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_55hs7"]
 seamless = true
 seamless_blend_skirt = 1.0
 as_normal_map = true
@@ -153,10 +153,14 @@ color_ramp = SubResource("Gradient_x221r")
 noise = SubResource("FastNoiseLite_q5v1o")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hfok"]
+resource_local_to_scene = true
 albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
 roughness = 0.88
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_i1j6o")
+normal_texture = SubResource("NoiseTexture2D_55hs7")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6vfk5"]
 radius = 3.02
@@ -294,6 +298,7 @@ draw_pass_1 = SubResource("SphereMesh_lh4l8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SalmonDad/Head/Laser/GPUParticles3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+visible = false
 layers = 4
 light_color = Color(0.909804, 0.294118, 0, 1)
 
@@ -454,23 +459,26 @@ light_bake_mode = 0
 light_cull_mask = 4294966273
 sky_mode = 1
 
-[node name="asteriod" type="Node3D" parent="."]
+[node name="asteroid" type="Node3D" parent="."]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="asteriod"]
+[node name="RigidBody3D" type="RigidBody3D" parent="asteroid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 axis_lock_linear_z = true
 mass = 50.0
 gravity_scale = 0.0
+center_of_mass_mode = 1
+inertia = Vector3(300, 300, 300)
 script = ExtResource("16_wftn2")
 metadata/heatCapacity = 3.0
 metadata/heat = 0.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="asteriod/RigidBody3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="asteroid/RigidBody3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 mesh = ExtResource("16_4ek8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_1hfok")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="asteriod/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="asteroid/RigidBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_6vfk5")
 
 [node name="Control" type="Control" parent="."]
