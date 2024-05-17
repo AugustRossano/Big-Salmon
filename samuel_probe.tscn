@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://ucwiipeycrwg"]
+[gd_scene load_steps=20 format=3 uid="uid://ucwiipeycrwg"]
 
+[ext_resource type="Script" path="res://Scripts/Follow.gd" id="1_abr7v"]
 [ext_resource type="ArrayMesh" uid="uid://dhqemoui7t7hg" path="res://Models/probe.obj" id="1_y8nq8"]
 
 [sub_resource type="Gradient" id="Gradient_ikw6p"]
@@ -74,11 +75,12 @@ radius = 1.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lfwoo"]
 radius = 0.25
 
-[node name="SamuelProbe" type="Node3D"]
+[node name="RigidBody3D" type="RigidBody3D"]
+axis_lock_linear_z = true
+gravity_scale = 0.0
+script = ExtResource("1_abr7v")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 4.37114e-08, 1.91069e-15, 0, -2.18557e-08, 0.5, 4.37114e-08, 0.5, 2.18557e-08, 0, 0, 0)
 mesh = ExtResource("1_y8nq8")
 surface_material_override/1 = SubResource("StandardMaterial3D_ry2qm")
@@ -86,21 +88,21 @@ surface_material_override/3 = SubResource("StandardMaterial3D_qpku5")
 surface_material_override/5 = SubResource("StandardMaterial3D_4xt2o")
 surface_material_override/6 = SubResource("StandardMaterial3D_h70yk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("BoxShape3D_5a2na")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 shape = SubResource("BoxShape3D_5a2na")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wka4i")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_6f1bd")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5, 0, 0)
 shape = SubResource("CapsuleShape3D_lfwoo")

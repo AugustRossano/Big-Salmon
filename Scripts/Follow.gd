@@ -15,7 +15,7 @@ func _process(delta):
 		global_position += direction * speed * delta
 	else:
 		print("No target set!")
-
+		set_target($Node3D/SalmonDad/Mid)
 # Function to set the target object
 func set_target(new_target : Node3D):
 	target = new_target

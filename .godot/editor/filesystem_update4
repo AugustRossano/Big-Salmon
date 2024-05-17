@@ -2,4 +2,15 @@ res://Main.tscn
 res://Models/scales.tres
 res://new_curve_texture.tres
 res://starNoise.tres
-res://Scripts/TargetSetter.gd
+res://meteor.tscn
+res://lingeringLight.tscn
+res://hotExplosion.tscn
+res://MysteriousShard.tscn
+res://ParticleKYS.gd
+res://Scripts/asteroid.gd
+res://Scripts/Follow.gd
+res://samuel_probe.tscn
+res://EnemyManager.gd
+res://Scripts/laserRaycast.gd
+res://Scripts/lightFade.gd
+res://Scripts/Noise.gd
