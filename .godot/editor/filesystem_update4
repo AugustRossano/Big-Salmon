@@ -1,8 +1,5 @@
 res://Main.tscn
-res://starNoise.tres
-res://new_curve_texture.tres
 res://Models/scales.tres
-res://Scripts/ProjectileRadius.gd
-res://meteor.tscn
-res://lingeringLight.tscn
-res://hotExplosion.tscn
+res://new_curve_texture.tres
+res://starNoise.tres
+res://Scripts/TargetSetter.gd
