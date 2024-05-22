@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=7 format=3 uid="uid://5x18sjkyof7u"]
 
 [ext_resource type="ArrayMesh" path="res://Models/mysteriousShard.obj" id="1_olroy"]
+=======
+[gd_scene load_steps=7 format=3 uid="uid://bk5ph15w22xb1"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7kaxihen3th0" path="res://Models/mysteriousShard.obj" id="1_olroy"]
+>>>>>>> Stashed changes
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vl34p"]
 frequency = 0.0198
