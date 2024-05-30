@@ -1,8 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy48nr81ovvg7"]
+[gd_scene load_steps=10 format=3 uid="uid://cy48nr81ovvg7"]
 
 [ext_resource type="Script" path="res://Scripts/lightFade.gd" id="1_q60u1"]
 
+[sub_resource type="Gradient" id="Gradient_8hvd7"]
+offsets = PackedFloat32Array(0, 0.697183)
+colors = PackedColorArray(0.568627, 0.176471, 0.0196078, 0.862745, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_syjqc"]
+gradient = SubResource("Gradient_8hvd7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygwtq"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u5cqo"]
+material = SubResource("StandardMaterial3D_ygwtq")
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_535t2"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p17up"]
+material = SubResource("StandardMaterial3D_535t2")
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxigj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t6vx5"]
+material = SubResource("StandardMaterial3D_dxigj")
+height = 4.0
+
 [node name="OmniLight3D" type="OmniLight3D"]
 light_color = Color(1, 0.360784, 0.266667, 1)
-light_size = 3.0
+light_energy = 0.662
+light_indirect_energy = 0.0
+light_size = 1.0
+light_specular = 0.646
+omni_range = 1.0
+omni_attenuation = 1.68179
 script = ExtResource("1_q60u1")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+visible = false
+texture_albedo = SubResource("GradientTexture2D_syjqc")
+texture_emission = SubResource("GradientTexture2D_syjqc")
+emission_energy = 3.6
+modulate = Color(1, 0, 0, 1)
+normal_fade = 0.999
+upper_fade = 0.0501213
+lower_fade = 1461.3
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)
+visible = false
+texture_albedo = SubResource("GradientTexture2D_syjqc")
+texture_emission = SubResource("GradientTexture2D_syjqc")
+emission_energy = 3.6
+modulate = Color(1, 0, 0, 1)
+normal_fade = 0.999
+upper_fade = 0.0501213
+lower_fade = 1461.3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_u5cqo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_p17up")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_t6vx5")

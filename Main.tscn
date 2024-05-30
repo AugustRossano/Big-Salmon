@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=53 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -17,7 +17,8 @@
 [ext_resource type="Script" path="res://Scripts/ACID.gd" id="9_blhv6"]
 [ext_resource type="ArrayMesh" uid="uid://lbpf4scs2jwu" path="res://Models/astriod.obj" id="16_4ek8b"]
 [ext_resource type="Script" path="res://Scripts/asteroid.gd" id="16_wftn2"]
-[ext_resource type="Script" path="res://EnemyManager.gd" id="18_qyb0b"]
+[ext_resource type="Script" path="res://EnemyManager.gd" id="18_clqbq"]
+[ext_resource type="PackedScene" uid="uid://ucwiipeycrwg" path="res://samuel_probe.tscn" id="19_xc4x4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
 
@@ -500,4 +501,6 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 5, -19)
 mesh = SubResource("BoxMesh_505em")
 
 [node name="EnemyManager" type="Node3D" parent="."]
-script = ExtResource("18_qyb0b")
+script = ExtResource("18_clqbq")
+
+[node name="RigidBody3D" parent="EnemyManager" instance=ExtResource("19_xc4x4")]

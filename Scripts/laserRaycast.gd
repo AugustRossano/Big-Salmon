@@ -40,6 +40,8 @@ func _process(delta):
 			
 			victim.add_child(lightInstance,false,1)
 			lightInstance.global_position = impact.global_position
+			lightInstance.look_at((get_collision_normal()),Vector3.DOWN)
+			
 	else:
 		laser.lifetime=2
 		#debug.position = Vector3(0,0,0)

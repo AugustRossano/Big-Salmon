@@ -1,4 +1,5 @@
 res://Main.tscn
+res://Scripts/laserRaycast.gd
 res://Models/scales.tres
 res://new_curve_texture.tres
 res://starNoise.tres
@@ -6,3 +7,4 @@ res://meteor.tscn
 res://lingeringLight.tscn
 res://hotExplosion.tscn
 res://samuel_probe.tscn
+res://Scripts/Follow.gd
