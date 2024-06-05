@@ -1,6 +1,7 @@
 extends RigidBody3D
 var asteriod = load("res://meteor.tscn")
 var explosion =preload("res://hotExplosion.tscn")
+
 var materialChanger:MeshInstance3D
 #var materialCopy:StandardMaterial3D
 
@@ -23,6 +24,10 @@ func _process(delta):
 		boom.global_position=global_position
 		boom.scale=scale
 		if(get_meta("heatCapacity")<0.5):
+			var shard = preload("res://MysteriousShard.tscn")
+			var shardInstance = shard.instantiate()
+			$"..".add_child(shardInstance)
+			shardInstance.global_position=global_position
 			free()
 		else:
 			

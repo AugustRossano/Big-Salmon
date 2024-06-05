@@ -1,54 +1,25 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=7 format=3 uid="uid://5x18sjkyof7u"]
+[gd_scene load_steps=5 format=3 uid="uid://dkvo4map1oevs"]
 
-[ext_resource type="ArrayMesh" path="res://Models/mysteriousShard.obj" id="1_olroy"]
-=======
-[gd_scene load_steps=7 format=3 uid="uid://bk5ph15w22xb1"]
+[ext_resource type="ArrayMesh" uid="uid://b7kaxihen3th0" path="res://Models/mysteriousShard.obj" id="1_nhpfv"]
+[ext_resource type="Script" path="res://Scripts/MysteriousShard.gd" id="2_3sbxt"]
 
-[ext_resource type="ArrayMesh" uid="uid://b7kaxihen3th0" path="res://Models/mysteriousShard.obj" id="1_olroy"]
->>>>>>> Stashed changes
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv1l0"]
+albedo_color = Color(0.235294, 0.219608, 0.172549, 1)
+metallic = 0.7
+roughness = 0.65
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vl34p"]
-frequency = 0.0198
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i30ht"]
-as_normal_map = true
-noise = SubResource("FastNoiseLite_vl34p")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocmm3"]
-albedo_color = Color(0.219608, 0.184314, 0.141176, 1)
-roughness = 0.0
-normal_texture = SubResource("NoiseTexture2D_i30ht")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f22i8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ao8yj"]
 transparency = 1
-blend_mode = 3
-cull_mode = 1
-depth_draw_mode = 2
-shading_mode = 2
-albedo_color = Color(1, 1, 1, 0.490196)
-metallic = 1.0
-roughness = 0.1
-emission = Color(0.576471, 0.576471, 0.576471, 1)
-grow_amount = -0.36
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_kv3bw"]
+cull_mode = 2
+albedo_color = Color(0.776471, 0, 0.937255, 0.403922)
 
 [node name="RigidBody3D" type="RigidBody3D"]
+top_level = true
+gravity_scale = 0.0
+script = ExtResource("2_3sbxt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_olroy")
-surface_material_override/0 = SubResource("StandardMaterial3D_ocmm3")
-surface_material_override/1 = SubResource("StandardMaterial3D_f22i8")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_kv3bw")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(1, 0, 1, 1)
-light_energy = 16.0
-light_size = 0.5
-shadow_opacity = 0.0
-shadow_blur = 0.0
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("1_nhpfv")
+surface_material_override/0 = SubResource("StandardMaterial3D_qv1l0")
+surface_material_override/1 = SubResource("StandardMaterial3D_ao8yj")

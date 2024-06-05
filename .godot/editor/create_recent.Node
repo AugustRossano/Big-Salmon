@@ -1,9 +1,9 @@
+CollisionShape3D
+RigidBody3D
 MeshInstance3D
 Decal
 SpotLight3D
 Node3D
 OmniLight3D
-CollisionShape3D
 Area3D
-RigidBody3D
 GPUParticles3D

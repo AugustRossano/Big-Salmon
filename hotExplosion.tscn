@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://brdgt4r4anc3f"]
 
-[ext_resource type="Script" path="res://ParticleKYS.gd" id="1_vjyh2"]
+[ext_resource type="Script" path="res://Scripts/ParticleKYS.gd" id="1_74gdh"]
 
 [sub_resource type="Curve" id="Curve_u1pck"]
 max_value = 3.0
@@ -58,4 +58,4 @@ explosiveness = 1.0
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_inplq")
 draw_pass_1 = SubResource("SphereMesh_r842w")
-script = ExtResource("1_vjyh2")
+script = ExtResource("1_74gdh")
