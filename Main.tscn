@@ -19,7 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/asteroid.gd" id="16_wftn2"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="18_clqbq"]
 [ext_resource type="PackedScene" uid="uid://dkvo4map1oevs" path="res://MysteriousShard.tscn" id="18_twsjh"]
-[ext_resource type="Texture2D" uid="uid://bxcf8yqv80f73" path="res://Scripts/L.png" id="20_at2oc"]
+[ext_resource type="Texture2D" path="res://Scripts/L.png" id="20_at2oc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
 

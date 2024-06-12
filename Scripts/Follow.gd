@@ -7,6 +7,7 @@ var speed : float = 10
 
 func _process(delta):
 	# Check if the target is valid
+	
 	print(get_meta("heat"))
 	if (get_meta("heat")>get_meta("headCapacity")):
 		queue_free()
