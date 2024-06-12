@@ -8,8 +8,4 @@ res://lingeringLight.tscn
 res://hotExplosion.tscn
 res://samuel_probe.tscn
 res://MysteriousShard.tscn
-res://Scripts/asteroid.gd
-res://Scripts/force.gd
 res://GlassPyramid.tscn
-res://Scripts/EnemyManager.gd
-res://Scripts/Follow.gd

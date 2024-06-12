@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dmdwttraqtwt5"]
+[gd_scene load_steps=54 format=3 uid="uid://dmdwttraqtwt5"]
 
 [ext_resource type="Script" path="res://Scripts/force.gd" id="1_oqs7g"]
 [ext_resource type="ArrayMesh" uid="uid://blplm1sk4p4yb" path="res://Models/salmonHead.obj" id="2_i4ecv"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/asteroid.gd" id="16_wftn2"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="18_clqbq"]
 [ext_resource type="PackedScene" uid="uid://dkvo4map1oevs" path="res://MysteriousShard.tscn" id="18_twsjh"]
+[ext_resource type="Texture2D" uid="uid://bxcf8yqv80f73" path="res://Scripts/L.png" id="20_at2oc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ia2gk"]
 
@@ -410,6 +411,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42)
 current = true
 fov = 40.0
 script = ExtResource("7_wseri")
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+pixel_size = 0.001
+texture = ExtResource("20_at2oc")
 
 [node name="Background" type="Node3D" parent="."]
 
