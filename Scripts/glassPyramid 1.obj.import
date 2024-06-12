@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dui1jheqw1l73"
+path="res://.godot/imported/glassPyramid 1.obj-95f2bd39af0a5e5a5ba2acab0c8a1ba4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/glassPyramid 1.obj-95f2bd39af0a5e5a5ba2acab0c8a1ba4.mesh"]
+
+source_file="res://Scripts/glassPyramid 1.obj"
+dest_files=["res://.godot/imported/glassPyramid 1.obj-95f2bd39af0a5e5a5ba2acab0c8a1ba4.mesh", "res://.godot/imported/glassPyramid 1.obj-95f2bd39af0a5e5a5ba2acab0c8a1ba4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

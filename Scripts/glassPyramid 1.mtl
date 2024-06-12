@@ -1,0 +1,12 @@
+# Blender 3.2.1 MTL File: 'glassPyramid.blend'
+# www.blender.org
+
+newmtl Material
+Ns 798.481506
+Ka 0.201835 0.201835 0.201835
+Kd 0.468262 0.520658 0.614615
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.284404
+illum 6

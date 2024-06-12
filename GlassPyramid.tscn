@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cac104g0fve52"]
+
+[ext_resource type="Script" path="res://Scripts/ProjectileRadius.gd" id="1_pe2vw"]
+[ext_resource type="ArrayMesh" uid="uid://dui1jheqw1l73" path="res://Scripts/glassPyramid 1.obj" id="2_kue1l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2eo42"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.901961, 0.847059, 1, 0.427451)
+clearcoat_roughness = 1.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cbndv"]
+data = PackedVector3Array(0, 0, 1, -1, -1, 0, -1, 1, 0, 0, 0, 1, -1, 1, 0, 1, 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 0, 0, 1, 1, -1, 0, -1, -1, 0, 0, 0, 1, 1, 1, 0, 1, -1, 0)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_pe2vw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.3, 0)
+mesh = ExtResource("2_kue1l")
+surface_material_override/0 = SubResource("StandardMaterial3D_2eo42")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cbndv")

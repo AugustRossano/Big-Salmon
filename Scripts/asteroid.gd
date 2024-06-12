@@ -24,11 +24,13 @@ func _process(delta):
 		boom.global_position=global_position
 		boom.scale=scale
 		if(get_meta("heatCapacity")<0.5):
+			$"../../SalmonDad".set_meta("PieceCount",$"../../SalmonDad".get_meta("PieceCount")+1)
 			var shard = preload("res://MysteriousShard.tscn")
 			var shardInstance = shard.instantiate()
 			$"..".add_child(shardInstance)
 			shardInstance.global_position=global_position
 			free()
+			
 		else:
 			
 			

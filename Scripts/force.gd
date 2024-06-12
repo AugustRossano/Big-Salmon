@@ -16,8 +16,8 @@ func _input(event):
 		var mousepos = get_viewport().get_mouse_position()
 		var query = cam.project_position(mousepos,42)
 		query.z=0
-		query = (position-query).normalized()*42/(position-query).length_squared()
-		if(query.length_squared()>1764):
-			query=query.normalized()*42
+		query = (position-query).normalized()*200/(position-query).length_squared()
+		if(query.length_squared()>400):
+			query=query.normalized()*20
 		apply_central_impulse(query)
 		

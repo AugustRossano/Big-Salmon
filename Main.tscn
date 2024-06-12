@@ -190,6 +190,7 @@ material = SubResource("StandardMaterial3D_2xsh2")
 [node name="Node3D" type="Node3D"]
 
 [node name="SalmonDad" type="Node3D" parent="."]
+metadata/PieceCount = 0
 
 [node name="Head" type="RigidBody3D" parent="SalmonDad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
